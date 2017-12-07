@@ -1,0 +1,110 @@
+{  
+   "nodes":[  
+      {  
+         "id":"1",
+         "labels":[  
+            "person"
+         ],
+         "properties":{  
+            "honorific":"Professor",
+            "name":"John Doe",
+            "org":0,
+            "school":"Research Operations & Capability",
+            "staffid":"11111",
+            "type":"Internal"
+         }
+      },
+      {  
+         "id":"2",
+         "labels":[  
+            "publication"
+         ],
+         "properties":{  
+            "isbnissn":"2222-2222",
+            "outlet":"Eminent International Journal",
+            "rmnumber":"22222",
+            "title":"A tool to generated dummy publication names",
+            "year":2016
+         }
+      },
+      {  
+         "id":"3",
+         "labels":[  
+            "person"
+         ],
+         "properties":{  
+            "honorific":"Professor",
+            "name":"Jane Doe",
+            "org":0,
+            "school":"Research & Innovation",
+            "staffid":"33333",
+            "type":"Internal"
+         }
+      },
+      {  
+         "id":"4",
+         "labels":[  
+            "person"
+         ],
+         "properties":{  
+            "honorific":"Dr",
+            "name":"Jenny Dane",
+            "org":0,
+            "school":"Computer Science and Information Technology",
+            "staffid":"44444",
+            "type":"Internal"
+         }
+      },
+      {  
+         "id":"5",
+         "labels":[  
+            "publication"
+         ],
+         "properties":{  
+            "isbnissn":"55555",
+            "outlet":"Proceedings of 2015 Best Conference in the World",
+            "rmnumber":"55555555",
+            "title":"Another Engineering paper",
+            "year":2015
+         }
+      }
+   ],
+   "relationships":[  
+      {  
+         "endNode":"3",
+         "id":"101010",
+         "properties":{  
+            "order":"2"
+         },
+         "startNode":"5",
+         "type":"AUTHORED_BY"
+      },
+      {  
+         "endNode":"4",
+         "id":"202020",
+         "properties":{  
+            "order":"4"
+         },
+         "startNode":"5",
+         "type":"AUTHORED_BY"
+      },
+      {  
+         "endNode":"1",
+         "id":"303030",
+         "properties":{  
+            "order":"4"
+         },
+         "startNode":"2",
+         "type":"AUTHORED_BY"
+      },
+      {  
+         "endNode":"4",
+         "id":"404040",
+         "properties":{  
+            "order":"3"
+         },
+         "startNode":"2",
+         "type":"AUTHORED_BY"
+      }
+   ]
+}
