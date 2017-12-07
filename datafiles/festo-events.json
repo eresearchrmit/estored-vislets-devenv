@@ -1,0 +1,161 @@
+{  
+   "type":"BIGAND",
+   "terms":[
+      {  
+         "type":"INSTATE",
+         "owner":"Stack Empty",
+         "timepoint":{"type":"TimePoint","timepoint":1474870753976},
+         "value":"Low"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Stack Ejector Extended",
+         "timepoint":{"type":"TimePoint","timepoint":1474870756052},
+         "value":"Low"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Stack Ejector Retracted",
+         "timepoint":{"type":"TimePoint","timepoint":1474870756714},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Stack Ejector Retracted",
+         "timepoint":{"type":"TimePoint","timepoint":1474870756769},
+         "value":"Low"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Stack Empty",
+         "timepoint":{"type":"TimePoint","timepoint":1474870757056},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Stack Ejector Extended",
+         "timepoint":{"type":"TimePoint","timepoint":1474870757147},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Loader Picked Up Extended",
+         "timepoint":{"type":"TimePoint","timepoint":1474870757936},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Workpiece Gripped",
+         "timepoint":{"type":"TimePoint","timepoint":1474870758100},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Workpiece Gripped",
+         "timepoint":{"type":"TimePoint","timepoint":1474870758101},
+         "value":"Low"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Workpiece Gripped",
+         "timepoint":{"type":"TimePoint","timepoint":1474870758109},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Loader Picked Up",
+         "timepoint":{"type":"TimePoint","timepoint":1474870758967},
+         "value":"Low"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Loader Dropped Off",
+         "timepoint":{"type":"TimePoint","timepoint":1474870760017},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Workpiece Gripped",
+         "timepoint":{"type":"TimePoint","timepoint":1474870760200},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Loader Dropped Off",
+         "timepoint":{"type":"TimePoint","timepoint":1474870761686},
+         "value":"Low"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Stack Empty",
+         "timepoint":{"type":"TimePoint","timepoint":1474870843665},
+         "value":"Low"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Stack Ejector Extended",
+         "timepoint":{"type":"TimePoint","timepoint":1474870846652},
+         "value":"Low"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Stack Ejector Retracted",
+         "timepoint":{"type":"TimePoint","timepoint":1474870847333},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Stack Ejector Retracted",
+         "timepoint":{"type":"TimePoint","timepoint":1474870847379},
+         "value":"Low"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Stack Empty",
+         "timepoint":{"type":"TimePoint","timepoint":1474870847667},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Stack Ejector Extended",
+         "timepoint":{"type":"TimePoint","timepoint":1474870847757},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Loader Picked Up",
+         "timepoint":{"type":"TimePoint","timepoint":1474870848481},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Workpiece Gripped",
+         "timepoint":{"type":"TimePoint","timepoint":1474870848630},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Loader Picked Up",
+         "timepoint":{"type":"TimePoint","timepoint":1474870849498},
+         "value":"Low"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Loader Dropped Off",
+         "timepoint":{"type":"TimePoint","timepoint":1474870850534},
+         "value":"High"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Workpiece Gripped",
+         "timepoint":{"type":"TimePoint","timepoint":1474870850713},
+         "value":"Low"
+      },
+      {  
+         "type":"INSTATE",
+         "owner":"Loader Dropped Off",
+         "timepoint":{"type":"TimePoint","timepoint":1474870852231},
+         "value":"Low"
+      }
+   ]
+}

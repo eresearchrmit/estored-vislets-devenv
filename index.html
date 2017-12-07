@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>eStoRED Vislets Development Tool</title>
+  <meta name="description" content="eStoRED Vislets Testing" />
+  <meta name="author" content="Guillaume Prevost" />
+  <meta name="robots" content="index" />
+
+  <link type="text/css" href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+  <link type="text/css" href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+  <link type="text/css" href="css/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+
+  <script type="application/javascript" src="js/jquery/jquery.min.js"></script>
+</head>
+
+<body class="nav-md">
+
+  <div class="container body">
+
+    <h1 class="text-center">eStoRED Vislets Development Tool</h1>
+
+    <div id="alerts" class="row"></div>
+
+    <div class="row">
+      <div class="col-md-2 col-sm-2 col-xs-2  text-right">
+        <label for="txtVisletPath">Vislet path</label>
+      </div>
+      <div class="col-md-8 col-sm-7 col-xs-6" >
+        <input type="text" id="txtVisletPath" style="width:100%" value="vislets/plain-text-as-code.js" />
+      </div>
+      <div class="col-md-2 col-sm-3 col-xs-4">
+        <button class="btn btn-primary" onClick="loadVislet(subId, $('#txtVisletPath').val(), visletLoaded);">Reload Vislet</button>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+      <div class="col-md-2 col-sm-2 col-xs-2  text-right">
+        <label for="txtHeaders">Headers (JSON associative array)</label>
+      </div>
+      <div class="col-md-8 col-sm-7 col-xs-6" >
+        <input type="text" id="txtHeaders" style="width:100%" value='{ "extension": "css" }' />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2 col-sm-2 col-xs-2 text-right">
+        <label for="txtareaData">Data to Send</label>
+      </div>
+      <div class="col-md-8 col-sm-7 col-xs-6" >
+        <textarea id="txtareaData" style="width:100%; min-height: 200px"></textarea>
+      </div>
+      <div class="col-md-2 col-sm-3 col-xs-4">
+        <button class="btn btn-primary" onClick="sendData(eltId, subId)">Send Data to Vislet</button><br /><br />
+        <button class="btn btn-primary" onClick="loadVisletAndSendData(eltId, subId)">Reload Vislet &amp; Send Data</button>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+      <div>
+      <div id="dataElementLoader-1" class="col-md-12 col-sm-12 col-xs-12 text-center">
+        <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #337ab7"></i>
+        <span class="sr-only">Loading...</span>
+      </div>
+
+      <div id="dataElementContent-1" style="width=100%; min-height: 300px"></div>
+
+      <div id="dataElementMetadata-1"></div>
+    </div>
+  </div>
+
+    <div class="row">
+      <hr />
+      <address class="pull-right">
+        <a href="/">by Guillaume Pr&eacute;vost</a><br />
+        August 2017
+      </address>
+    </div>
+  </div>
+  
+  <script th:each="sub,iterationStatus  : ${element.dataSubscriptions}" type="text/javascript">
+  /*<![CDATA[*/
+
+    function displayAlert(content, type) {
+      if ($("#alerts > div.alert").length > 2) {
+        $("#alerts").find('div.alert').first().remove();
+      }
+      $("#alerts").append("<div class=\"alert bg-" + type + "\" role=\"alert\">" + content + "</div>");
+    }
+
+    var dataElementVisualisers = new Array();
+    var allVisualisersDependencies = new Array();
+
+    function loadVislet(subscriptionId, url, callback) {
+        //console.log($("head script[src='" + url + "']#plain-text-as-text"));
+        if (dataElementVisualisers[subscriptionId] !== undefined)
+          $("head script[src='" + url + "']#" + dataElementVisualisers[subscriptionId].meta.id).remove();
+
+        var script = document.createElement("script")
+        script.type = "text/javascript";
+        //script.id = "visletScript";
+
+        if (script.readyState) { //IE
+            script.onreadystatechange = function () {
+                if (script.readyState == "loaded" || script.readyState == "complete") {
+                    script.onreadystatechange = null;
+                    //console.log(dataElementVisualiser);
+                    dataElementVisualisers[subscriptionId] = dataElementVisualiser;
+                    script.id = dataElementVisualisers[subscriptionId].meta.id;
+                    callback();
+                }
+            };
+        } else { //Other browsers
+            script.onload = function () {
+            	//console.log(dataElementVisualiser);
+            	dataElementVisualisers[subscriptionId] = dataElementVisualiser;
+              script.id = dataElementVisualisers[subscriptionId].meta.id;
+              callback();
+            };
+        }
+        script.src = url;
+        document.getElementsByTagName("head")[0].appendChild(script);
+    }
+
+    function visletLoaded() {
+      $("#dataElementContent-1").html("");
+      displayAlert("Vislet loaded", "success");
+
+      if (dataElementVisualisers[subId] != null && dataElementVisualisers[subId].dependencies != null) {
+        // Load JS depedencies
+        dataElementVisualisers[subId].dependencies.js.forEach(function(dependency, index) {
+          if (!_.contains(allVisualisersDependencies, dependency)) {
+            console.log(dependency);
+            var script = document.createElement("script");
+            script.type = "application/javascript";
+            script.src = dependency;
+            script.async = true;
+              script.onload = function() {
+                  // remote script has loaded
+              };
+              if (typeof script != "undefined")
+                document.getElementsByTagName("head")[0].appendChild(script);
+              allVisualisersDependencies.push(dependency);
+          }
+        });
+
+        // Load CSS dependencies
+        dataElementVisualisers[subId].dependencies.css.forEach(function(dependency, index) {
+          if (!_.contains(allVisualisersDependencies, dependency)) {
+            var stylesheet = document.createElement("link");
+              stylesheet.setAttribute("rel", "stylesheet");
+              stylesheet.setAttribute("type", "text/css");
+              stylesheet.setAttribute("href", dependency);
+              if (typeof stylesheet != "undefined")
+                  document.getElementsByTagName("head")[0].appendChild(stylesheet);
+              allVisualisersDependencies.push(dependency);
+          }
+        });
+      }
+
+      // VISUALISER INIT
+      dataElementVisualisers[subId].initialiseVisualiser(eltId, '#dataElementContent-' + eltId);
+      // VISUALISER POST-CONNECTION INIT - IMMEDIATELY TRIGGERED BECAUSE NO CONNECTION NEEDED
+      dataElementVisualisers[subId].initialiseVisualiserPostConnection(eltId, '#dataElementContent-' + eltId);
+    }
+
+    function sendData(eltId, subId) {
+
+      var body = $("#txtareaData").val();
+      var headers = JSON.parse($("#txtHeaders").val());
+      var data = { "headers": headers, "body": btoa(body) };
+      //console.log(data);
+
+      $("#dataElementLoader-" + eltId).show();
+      try {
+        dataElementVisualisers[subId].visualiseData(eltId, '#dataElementContent-' + eltId, data);
+        displayAlert("Data sent to Vislet (" + body.length + " bytes)", "success");
+      }
+      catch(err) {
+          console.log("Error in Visualiser: " + err);
+          displayAlert("Error in Visualiser: " + err, "danger");
+      }
+      $("#dataElementLoader-" + eltId).hide();
+    }
+
+    function loadVisletAndSendData(eltId, subId) {
+      loadVislet(subId, $("#txtVisletPath").val(), visletLoaded);
+      setTimeout(function(){
+        sendData(eltId, subId);
+      }, 500);
+    }
+
+
+    var eltId = 1;
+    var subId = 1;
+    $(document).ready(function(e) {
+      displayAlert("Welcome to eStoRED Vislet Development Tool !", "info");
+      displayAlert("Load a Vislet and send some data for it to handle.", "info");
+      loadVislet(subId, $("#txtVisletPath").val(), visletLoaded);
+    });
+  /*]]>*/
+  </script>
+
+  <script type="application/javascript" src="js/jquery-ui/jquery-ui.min.js"></script>
+  <script type="application/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+  <script type="application/javascript" src="js/underscore/underscore.min.js"></script>
+
+</body>
+</html>

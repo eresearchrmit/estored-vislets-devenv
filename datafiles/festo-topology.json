@@ -1,0 +1,313 @@
+{
+   "type":"BIGAND",
+   "terms":[
+      {
+         "type":"EdgeAnnotated",
+         "source":{
+            "type":"Component",
+            "id":"Stack Ejector Retracted"
+         },
+         "target":{
+            "type":"Component",
+            "id":"Stack Ejector Extended"
+         },
+         "annotation":{
+            "type":"FestoStateCorrelation",
+            "cause":{
+               "type":"Obstructed"
+            },
+            "duration":{
+               "type":"TimeDuration",
+               "start":{
+                  "type":"SS Variable",
+                  "expression":{
+                     "type":"Obstructed"
+                  }
+               },
+               "scalar":{
+                  "type":"SS Addition",
+                  "expression":[
+                     {
+                        "type":"SS Variable",
+                        "expression":{
+                           "type":"Obstructed"
+                        }
+                     },
+                     {
+                        "type":"SS Constant",
+                        "expression":-2
+                     }
+                  ]
+               }
+            },
+            "effect":{
+               "type":"Unobstructed"
+            }
+         }
+      },
+      {
+         "type":"EdgeAnnotated",
+         "source":{
+            "type":"Component",
+            "id":"Stack Ejector Extended"
+         },
+         "target":{
+            "type":"Component",
+            "id":"Stack Empty"
+         },
+         "annotation":{
+            "type":"FestoStateCorrelation",
+            "cause":{
+               "type":"Obstructed"
+            },
+            "duration":{
+               "type":"TimeDuration",
+               "start":{
+                  "type":"SS Variable",
+                  "expression":{
+                     "type":"Obstructed"
+                  }
+               },
+               "scalar":{
+                  "type":"SS Addition",
+                  "expression":[
+                     {
+                        "type":"SS Variable",
+                        "expression":{
+                           "type":"Obstructed"
+                        }
+                     },
+                     {
+                        "type":"SS Constant",
+                        "expression":-1
+                     }
+                  ]
+               }
+            },
+            "effect":{
+               "type":"Unobstructed"
+            }
+         }
+      },
+      {
+         "type":"EdgeAnnotated",
+         "source":{
+            "type":"Component",
+            "id":"Stack Ejector Extended"
+         },
+         "target":{
+            "type":"Component",
+            "id":"Stack Ejector Retracted"
+         },
+         "annotation":{
+            "type":"FestoStateCorrelation",
+            "cause":{
+               "type":"Obstructed"
+            },
+            "duration":{
+               "type":"TimeDuration",
+               "start":{
+                  "type":"SS Variable",
+                  "expression":{
+                     "type":"Obstructed"
+                  }
+               },
+               "scalar":{
+                  "type":"SS Addition",
+                  "expression":[
+                     {
+                        "type":"SS Variable",
+                        "expression":{
+                           "type":"Obstructed"
+                        }
+                     },
+                     {
+                        "type":"SS Constant",
+                        "expression":-2
+                     }
+                  ]
+               }
+            },
+            "effect":{
+               "type":"Obstructed"
+            }
+         }
+      },
+      {
+         "type":"EdgeAnnotated",
+         "source":{
+            "type":"Component",
+            "id":"Stack Ejector Extended"
+         },
+         "target":{
+            "type":"Component",
+            "id":"Workpiece Gripped"
+         },
+         "annotation":{
+            "type":"FestoStateCorrelation",
+            "cause":{
+               "type":"Obstructed"
+            },
+            "duration":{
+               "type":"TimeDuration",
+               "start":{
+                  "type":"SS Variable",
+                  "expression":{
+                     "type":"Obstructed"
+                  }
+               },
+               "scalar":{
+                  "type":"SS Addition",
+                  "expression":[
+                     {
+                        "type":"SS Variable",
+                        "expression":{
+                           "type":"Obstructed"
+                        }
+                     },
+                     {
+                        "type":"SS Constant",
+                        "expression":5
+                     }
+                  ]
+               }
+            },
+            "effect":{
+               "type":"Obstructed"
+            }
+         }
+      },
+      {
+         "type":"EdgeAnnotated",
+         "source":{
+            "type":"Component",
+            "id":"Workpiece Gripped"
+         },
+         "target":{
+            "type":"Component",
+            "id":"Loader Picked Up"
+         },
+         "annotation":{
+            "type":"FestoStateCorrelation",
+            "cause":{
+               "type":"Gripped"
+            },
+            "duration":{
+               "type":"TimeDuration",
+               "start":{
+                  "type":"SS Variable",
+                  "expression":{
+                     "type":"Gripped"
+                  }
+               },
+               "scalar":{
+                  "type":"SS Addition",
+                  "expression":[
+                     {
+                        "type":"SS Variable",
+                        "expression":{
+                           "type":"Gripped"
+                        }
+                     },
+                     {
+                        "type":"SS Constant",
+                        "expression":-3
+                     }
+                  ]
+               }
+            },
+            "effect":{
+               "type":"Loose"
+            }
+         }
+      },
+      {
+         "type":"EdgeAnnotated",
+         "source":{
+            "type":"Component",
+            "id":"Loader Picked Up"
+         },
+         "target":{
+            "type":"Component",
+            "id":"Loader Dropped Off"
+         },
+         "annotation":{
+            "type":"FestoStateCorrelation",
+            "cause":{
+               "type":"Obstructed"
+            },
+            "duration":{
+               "type":"TimeDuration",
+               "start":{
+                  "type":"SS Variable",
+                  "expression":{
+                     "type":"Obstructed"
+                  }
+               },
+               "scalar":{
+                  "type":"SS Addition",
+                  "expression":[
+                     {
+                        "type":"SS Variable",
+                        "expression":{
+                           "type":"Obstructed"
+                        }
+                     },
+                     {
+                        "type":"SS Constant",
+                        "expression":3
+                     }
+                  ]
+               }
+            },
+            "effect":{
+               "type":"Obstructed"
+            }
+         }
+      },
+      {
+         "type":"EdgeAnnotated",
+         "source":{
+            "type":"Component",
+            "id":"Loader Dropped Off"
+         },
+         "target":{
+            "type":"Component",
+            "id":"Stack Ejector Extended"
+         },
+         "annotation":{
+            "type":"FestoStateCorrelation",
+            "cause":{
+               "type":"Obstructed"
+            },
+            "duration":{
+               "type":"TimeDuration",
+               "start":{
+                  "type":"SS Variable",
+                  "expression":{
+                     "type":"Obstructed"
+                  }
+               },
+               "scalar":{
+                  "type":"SS Addition",
+                  "expression":[
+                     {
+                        "type":"SS Variable",
+                        "expression":{
+                           "type":"Obstructed"
+                        }
+                     },
+                     {
+                        "type":"SS Constant",
+                        "expression":1
+                     }
+                  ]
+               }
+            },
+            "effect":{
+               "type":"Unobstructed"
+            }
+         }
+      }
+   ]
+}
